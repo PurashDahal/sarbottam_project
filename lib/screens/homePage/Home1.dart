@@ -52,10 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.white, 
-      systemNavigationBarIconBrightness: Brightness.light,
-    ));
+   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.white,
+   
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarDividerColor: null, 
+systemNavigationBarIconBrightness: Brightness.light,
+   ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SafeArea(
