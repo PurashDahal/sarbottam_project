@@ -1,15 +1,18 @@
-import 'package:flutter/foundation.dart';
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:sarbottam/Notification1.dart';
+// import 'package:sarbottam/Notification1.dart';
 // import 'package:sarbottam/noticifaction.dart';
-import 'package:sarbottam/screens/LogIn/login.dart';
+// import 'package:sarbottam/screens/LogIn/login.dart';
 import 'package:sarbottam/screens/homePage/Home2.dart';
 import 'package:sarbottam/screens/homePage/widgets/Report.dart';
 import 'package:sarbottam/screens/homePage/widgets/User.dart';
 import 'package:sarbottam/screens/homePage/widgets/home_grid.dart';
-import 'package:sarbottam/screens/homePage/widgets/userdetail.dart';
+import 'package:sarbottam/screens/homePage/widgets/scheme_slider.dart';
+// import 'package:sarbottam/screens/homePage/widgets/userdetail.dart';
 import 'package:sarbottam/screens/notifications.dart';
+
+import 'widgets/blogs_and_articles_slider.dart';
 
 void main() => runApp(const HomePage());
 
@@ -22,9 +25,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final appTitle = 'Sarbottam Home Page';
+ 
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       title: appTitle,
       home: MyHomePage(title: appTitle),
@@ -42,13 +47,38 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _currentIndex = 0;
+  // int _currentIndex = 0;
+       List<String> schemeImages=[
+'assets/schemes/scheme1.jpg',
+'assets/schemes/scheme2.jpg',
+'assets/schemes/scheme3.jpg',
 
-  void change(index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+
+  ];
+  List<String> images=[
+'assets/schemes/blog1.jpg',
+'assets/schemes/blog2.jpg',
+'assets/schemes/blog3.jpg',
+
+
+  ];
+  List<String> title=[
+    "Scheme 1",
+    "Scheme 2",
+    "Scheme 3",
+
+  ];
+  List<String> price=[
+    "Rs.1200",
+    "Rs.1300",
+    "Rs.1400"
+  ];
+
+  // void change(index) {
+  //   setState(() {
+  //     _currentIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -116,30 +146,78 @@ systemNavigationBarIconBrightness: Brightness.light,
           // ),
           // appBar: appBar(),
          
-          body: Column(
-            children: [
-              SizedBox(height: 20,),
-              appBar(),
-              Home2(),
-              Container(
-                height: 3,
-                width: double.infinity,
-                color: Colors.blue[900],
+          body: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 20,),
+                appBar(),
+                Home2(),
+                Container(
+                  height: 3,
+                  width: double.infinity,
+                  color: Colors.blue[900],
+                ),
+                Container(
+                  height: 7,
+                  width: double.infinity,
+                  color: Colors.red,
+                ),
+                Container(
+                  height: 6,
+                  width: double.infinity,
+                  color: Colors.orange[300],
+                ),
+                SizedBox(height: 30),
+                // IconButtonsRow(),
+                HomeGrid(),
+                SizedBox(height: 20,),
+                Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left:18.0),
+                      child: Container(child: Text("Our Schemes", style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                           fontWeight: FontWeight.bold
+                           ,
+                           fontSize: 20
+                      ),),
+                      
+                    
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right:18.0),
+                      child: Text("View All",style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20
+                        )),
+                    )
+                  ],
+                  
+                ),
+               const SizedBox(height: 10,),
+                SchemeSlider(images:schemeImages, price: price, title: title,),
+            const SizedBox(
+            height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left:18.0),
+              child: Row(
+                children: [
+                  Text("Blogs and Articles", style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                 fontWeight: FontWeight.bold
+                                 ,
+                                 fontSize: 20
+                            ),),
+                ],
               ),
-              Container(
-                height: 7,
-                width: double.infinity,
-                color: Colors.red,
-              ),
-              Container(
-                height: 6,
-                width: double.infinity,
-                color: Colors.orange[300],
-              ),
-              SizedBox(height: 30),
-              // IconButtonsRow(),
-              HomeGrid()
-            ],
+            ),
+               const SizedBox(height: 20,),
+
+            BlogsandArticlesSlider(images: images,),
+            SizedBox(height: 30,),
+              ],
+            ),
           ),
         ),
       ),
@@ -194,6 +272,7 @@ shape: BoxShape.circle
 }
 
 class IconButtonsRow extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return Column(

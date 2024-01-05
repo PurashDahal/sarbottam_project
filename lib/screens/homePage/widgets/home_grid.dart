@@ -5,11 +5,11 @@ import 'package:sarbottam/screens/homePage/modal.dart';
 class HomeGrid extends StatelessWidget {
   HomeGrid({super.key});
   List<GridModal> data=[
-    GridModal(icon:Icons.person_add_alt_1, label: "Add Dealers",color: Colors.red),
-    GridModal(icon:Icons.menu_book_sharp, label: "Create Booklet",color: Colors.orange),
-    GridModal(icon: Icons.add_shopping_cart_rounded, label: "Place Order", color: Colors.green),
+    GridModal(icon:Icons.person_add_alt_1, label: "Customer",color: Colors.red),
+    GridModal(icon:Icons.menu_book_sharp, label: " Booklet",color: Colors.orange),
+    // GridModal(icon: Icons.add_shopping_cart_rounded, label: "Place Order", color: Colors.green),
     GridModal(icon: Icons.diamond_outlined, label: "Payment",color: Colors.blue),
-GridModal(icon: Icons.report, label:"Report", color: Colors.purple)
+// GridModal(icon: Icons.report, label:"Report", color: Colors.purple)
 
   ];
 
